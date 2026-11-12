@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>홍길동 | 프론트엔드 개발자</title>
+  <meta name="description" content="프론트엔드 개발자 홍길동의 프로필 사이트" />
+  <script>
+    // 첫 페인트 전에 다크모드 적용 (깜빡임 방지)
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    } catch (e) {}
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        cream: '#F7F4EF', sand: '#E9E1D5', oak: '#8B6B4A', espresso: '#2B241D', bark: '#1B1612'
+      } } }
+    };
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-cream font-light text-espresso dark:bg-bark dark:text-sand antialiased">
+
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-espresso/70 text-sand backdrop-blur">
+    <nav class="mx-auto flex h-16 max-w-5xl items-center justify-between px-4" aria-label="주요 메뉴">
+      <a href="#home" class="text-xl font-normal uppercase tracking-[0.2em] text-white" id="brand">Portfolio</a>
+      <ul id="nav-links" class="ml-auto mr-8 hidden items-center gap-10 text-xs font-normal uppercase tracking-[0.18em] md:flex"></ul>
+      <div class="flex items-center gap-2">
+        <button id="theme-toggle" type="button" aria-label="다크모드 전환"
+          class="rounded-full p-2 text-sand hover:bg-white/10">
+          <span id="theme-icon" aria-hidden="true">🌙</span>
+        </button>
+        <button id="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu"
+          class="rounded-full p-2 text-sand hover:bg-white/10 md:hidden">
+          <span aria-hidden="true">☰</span>
+        </button>
+      </div>
+    </nav>
+    <ul id="mobile-menu" class="hidden border-t border-white/10 px-4 py-2 text-sm uppercase tracking-[0.18em] md:hidden"></ul>
+  </header>
+
+  <main>
+    <section id="home" class="bg-gradient-to-br from-espresso via-[#4a3a2a] to-oak">
+      <div class="mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 pt-24 pb-16 text-white">
+      <p class="reveal text-xs uppercase tracking-[0.3em] text-sand/80" id="hero-role"></p>
+      <h1 class="reveal mt-4 text-5xl font-extralight uppercase tracking-tight sm:text-7xl" id="hero-name"></h1>
+      <p class="reveal mt-6 max-w-xl text-base leading-relaxed text-sand/90" id="hero-bio"></p>
+      <div class="reveal mt-10 flex flex-wrap gap-4">
+        <a href="#projects" class="border border-white px-6 py-3 text-xs uppercase tracking-[0.2em] hover:bg-white hover:text-espresso">프로젝트 보기</a>
+        <a href="#contact" class="border border-white/30 px-6 py-3 text-xs uppercase tracking-[0.2em] hover:border-white">연락하기</a>
+      </div>
+      </div>
+    </section>
+
+    <section id="skills" class="py-24">
+      <div class="mx-auto max-w-6xl px-6">
+        <h2 class="reveal text-3xl font-extralight uppercase tracking-wide sm:text-4xl">기술 스택</h2>
+        <ul id="skills-list" class="mt-10 flex flex-wrap gap-4"></ul>
+      </div>
+    </section>
+
+    <section id="projects" class="border-t border-espresso/10 py-24 dark:border-white/10">
+      <div class="mx-auto max-w-6xl px-6">
+        <h2 class="reveal text-3xl font-extralight uppercase tracking-wide sm:text-4xl">프로젝트</h2>
+        <div id="projects-grid" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="bg-sand py-24 dark:bg-espresso">
+      <div class="mx-auto max-w-6xl px-6">
+        <h2 class="reveal text-3xl font-extralight uppercase tracking-wide sm:text-4xl">연락처</h2>
+        <p class="reveal mt-4 text-espresso/70 dark:text-sand/70">함께 일하고 싶으시다면 편하게 연락 주세요.</p>
+        <ul id="contact-list" class="mt-8 flex flex-wrap gap-6"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-espresso/10 py-24 text-center text-xs uppercase tracking-widest text-espresso/60 dark:border-white/10 dark:text-sand/60">
+    <p id="footer-text"></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

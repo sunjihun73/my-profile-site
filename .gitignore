@@ -1,0 +1,28 @@
+# IDE / Editor
+.idea/
+.vscode/
+*.iml
+*.swp
+*~
+
+# Claude Code 로컬 설정
+.claude/settings.local.json
+
+# 로컬 MCP 설정 (IDE 포트 등 환경별 값)
+.mcp.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Dependencies / build
+node_modules/
+dist/
+build/
+
+# Logs & env
+*.log
+npm-debug.log*
+.env
+.env.*
